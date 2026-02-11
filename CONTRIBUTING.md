@@ -39,23 +39,35 @@ We suggest to make feature requests via the official [Google group](https://grou
 ## Code contributions
 
 We welcome code contributions to the `MSstats`. 
-Every contribution should be made via a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) on GitHub and obey the following rules:
+Every contribution should be made via a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) on GitHub.
 
-* if the pull request is meant to fix a bug, please start an issue earlier to describe it,
-* a separate Git branch should be created for each pull request,
-* the pull request must pass checks performed by the continuous integration system,
-* the pull request should include relevant tests. We use [testthat](https://cran.r-project.org/package=testthat) for writing tests,
-* new code should be properly documented. We use [roxygen2](https://cran.r-project.org/package=roxygen2) and
-[R Markdown](https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html) for documentation.  
-* new code should follow the tidyverse [style guide](https://style.tidyverse.org) with the following exceptions:
-    - names of functions and classes should be `camelCase`,
-    - other names should use the underscore `_` and lowercase, except already existing names,
-    which should not be changed to ensure backward compatibility.
-* when starting a pull request, please add at least two reviewers:
-    - [Anthony Wu](https://github.com/tonywu1999) - developer of MSstats,
-    - [Mateusz Staniak](https://github.com/mstaniak) - developer of MSstats,
-* before the pull request is merged, please update the NEWS.md file and version of the package, following the conventions of [semantic versioning](https://semver.org/) and [Bioconductor](http://bioconductor.org/developers/how-to/version-numbering/).
+### Hard Constraints (Required)
 
+These requirements **must** be met for your pull request to be accepted:
+
+* **Create a separate Git branch** for each pull request
+* **Pass all CI checks** - the continuous integration system must give a green light
+* **Include relevant tests** using [testthat](https://cran.r-project.org/package=testthat)
+* **Document new code** using [roxygen2](https://cran.r-project.org/package=roxygen2) and [R Markdown](https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html)
+* **Add reviewers** - tag at least these two people:
+    - [Anthony Wu](https://github.com/tonywu1999) - MSstats developer
+    - [Mateusz Staniak](https://github.com/mstaniak) - MSstats developer
+* **Update NEWS.md and package version** before merging, following [semantic versioning](https://semver.org/) and [Bioconductor versioning](http://bioconductor.org/developers/how-to/version-numbering/) conventions
+
+### Soft Constraints (Strongly Recommended)
+
+These guidelines should be followed when possible to maintain code quality:
+
+* **For bug fixes**: Open an issue first to describe the problem
+* **Follow the tidyverse [style guide](https://style.tidyverse.org)** with these exceptions:
+    - Function and class names: use `camelCase`
+    - Other names: use lowercase with underscores (`snake_case`), except for existing names that must remain unchanged for backward compatibility
+* **Limit dependencies** to keep the package lightweight
+* **Maintain backward compatibility** when modifying existing functionality
+* **Use `@inheritParams`** when functions share parameter documentation
+* **Reuse existing functions** rather than duplicating code
+* **Prefer `data.table`** for data manipulation when appropriate
+* **Use `match.arg()`** for argument validation when applicable
 
 ## 🚀 New Developer Setup Guide
 
